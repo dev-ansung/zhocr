@@ -5,7 +5,8 @@ from src.video import VideoProcessor
 from src.subtitle import SubtitleProcessor
 
 def main():
-    parser = argparse.ArgumentParser(description="Subtitle Extractor")
+    parser = argparse.ArgumentParser(description="Rapid Chinese subtitle OCR extractor")
+    parser.add_argument("video", help="Input video file")
     parser.add_argument("--start", type=float, default=0.0, help="Start time in seconds")
     parser.add_argument("--duration", type=float, default=None, help="Duration to process in seconds")
     args = parser.parse_args()
@@ -13,7 +14,7 @@ def main():
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     run_dir = f"output/{timestamp}"
 
-    raw_video = "full.mp4"
+    raw_video = args.video
     processed_video = f"{run_dir}/processed.mp4"
     coarse_subtitle = f"{run_dir}/coarse_output.srt"
     fine_subtitle = f"{run_dir}/fine_output.srt"

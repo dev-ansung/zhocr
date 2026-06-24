@@ -45,8 +45,8 @@ For detailed explanations of core subsystems and performance metrics, please rea
 Requires [uv](https://github.com/astral-sh/uv):
 
 ```bash
-uvx --from git+https://github.com/dev-ansung/zhocr zhocr
-uvx --from git+https://github.com/dev-ansung/zhocr zhocr --start 60.0 --duration 20.0
+uvx --from git+https://github.com/dev-ansung/zhocr zhocr video.mp4
+uvx --from git+https://github.com/dev-ansung/zhocr zhocr video.mp4 --start 60.0 --duration 20.0
 ```
 
 ### Developer Setup
@@ -60,8 +60,8 @@ uv sync
 
 Then run via:
 ```bash
-uv run zhocr
-uv run zhocr --start 60.0 --duration 20.0
+uv run zhocr video.mp4
+uv run zhocr video.mp4 --start 60.0 --duration 20.0
 ```
 
 ## CLI Usage
@@ -70,10 +70,10 @@ The outputs (coarse SRT, refined SRT, cropped video, and debug frames) are autom
 
 ```bash
 # Run the pipeline for the entire video
-zhocr
+zhocr video.mp4
 
 # Process a specific segment
-zhocr --start 60.0 --duration 20.0
+zhocr video.mp4 --start 60.0 --duration 20.0
 ```
 
 ### CLI Parameters
