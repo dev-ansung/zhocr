@@ -24,16 +24,17 @@ An automated, high-precision video subtitle extraction and refinement pipeline. 
 │   ├── presence.py             # Top-Hat, Otsu binarization, CCL, and presence check
 │   ├── cache.py                # Asymmetric coverage, subtitle similarity, and CoverageCache
 │   ├── ocr.py                  # SubtitleOCR wrapper around EasyOCR
-│   └── subtitle.py             # SubtitleProcessor (coarse extraction and refinement)
+│   ├── subtitle.py             # SubtitleProcessor (coarse extraction and refinement)
+│   └── shift_timestamps.py     # CLI utility to offset SRT timestamps from a given entry
 └── test/
     └── test_processors.py      # Automated unit tests covering all components
 ```
 
 For detailed explanations of core subsystems and performance metrics, please read:
-* [Architecture & Flow Guide](file:///Users/an/Development/Subtitle/docs/architecture.md)
-* [Presence Detection & Morphology Guide](file:///Users/an/Development/Subtitle/docs/presence_detection.md)
-* [Caching & Refinement Guide](file:///Users/an/Development/Subtitle/docs/caching_and_refinement.md)
-* [Benchmark & Comparisons Guide](file:///Users/an/Development/Subtitle/docs/benchmark.md)
+* [Architecture & Flow Guide](docs/architecture.md)
+* [Presence Detection & Morphology Guide](docs/presence_detection.md)
+* [Caching & Refinement Guide](docs/caching_and_refinement.md)
+* [Benchmark & Comparisons Guide](docs/benchmark.md)
 
 ---
 
@@ -46,7 +47,7 @@ For detailed explanations of core subsystems and performance metrics, please rea
 ### Installation
 Clone the repository and sync the virtual environment:
 ```bash
-# Clone the repository
+git clone https://github.com/dev-ansung/Subtitle.git
 cd Subtitle
 
 # Sync dependencies and create venv using uv
@@ -70,6 +71,26 @@ uv run main.py --start 60.0 --duration 20.0
 ### CLI Parameters
 * `--start`: Start time offset in seconds (default: `0.0`).
 * `--duration`: Number of seconds to process (default: entire video).
+
+---
+
+## Utilities
+
+### Shift SRT Timestamps
+
+`src/shift_timestamps.py` offsets all timestamps in an SRT file from a given entry index. Useful for correcting sync when the first few entries (e.g. title cards) should stay fixed.
+
+```bash
+# Shift all entries from index 3 onwards by +5 seconds (default), in place
+python3 src/shift_timestamps.py output/my_file.srt
+
+# Write to a new file with a custom offset and start index
+python3 src/shift_timestamps.py input.srt output.srt --offset 3000 --from-index 5
+```
+
+**Options:**
+* `--offset`: Offset in milliseconds (default: `5000`).
+* `--from-index`: First entry index to shift (default: `3`).
 
 ---
 
