@@ -1,5 +1,7 @@
 import numpy as np
 
+DEFAULT_CROP = dict(top=0.80, bottom=1.0, left=0.2, right=0.8)
+
 class CropStrategy:
     def __init__(self, top: float, bottom: float, left: float, right: float):
         """

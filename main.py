@@ -1,6 +1,6 @@
 import argparse
 import datetime
-from src.strategies import CropStrategy, FrameStrategy
+from src.strategies import CropStrategy, FrameStrategy, DEFAULT_CROP
 from src.video import VideoProcessor
 from src.subtitle import SubtitleProcessor
 
@@ -24,7 +24,7 @@ def main():
 
     # 1. Process Video (resample and crop)
     video_processor = VideoProcessor()
-    crop_strat = CropStrategy(top=0.80, bottom=1.0, left=0.0, right=1.0)
+    crop_strat = CropStrategy(**DEFAULT_CROP)
     frame_strat = FrameStrategy(fps=1.0)
     modifications = [crop_strat, frame_strat]
 

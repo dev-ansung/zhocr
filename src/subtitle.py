@@ -208,8 +208,8 @@ class SubtitleProcessor:
         (self.ocr_input_dir / "refinement").mkdir(parents=True, exist_ok=True)
         
         # Default crop strategy to bottom strip if not specified
-        from src.strategies import CropStrategy
-        self.crop_strat = crop_strat or CropStrategy(top=0.80, bottom=1.0, left=0.0, right=1.0)
+        from src.strategies import CropStrategy, DEFAULT_CROP
+        self.crop_strat = crop_strat or CropStrategy(**DEFAULT_CROP)
 
     def process_coarse_subtitle(
         self,
