@@ -1,0 +1,30 @@
+[project]
+name = "subtitle"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy",
+    "opencv-python",
+    "easyocr",
+]
+
+[tool.uv]
+package = true
+dev-dependencies = [
+    "pytest>=9.1.1",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["main"]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+pythonpath = [".", "src"]
+
+[project.scripts]
+main = "main:main"

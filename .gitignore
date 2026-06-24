@@ -1,0 +1,33 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Testing cache
+.pytest_cache/
+
+# Large media files
+full.mp4
+test_processed_*.mp4
+
+# Local output & debugging directories
+output/
+ocr_input*/
+ref_86s.jpg
+*.jpg
+*.srt
+
+# Build & distribution packaging
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Others
+stash/
