@@ -1,4 +1,4 @@
-# Subtitle Extractor & Timestamp Refiner
+# zhocr — Rapid Chinese Subtitle OCR
 
 An automated, high-precision video subtitle extraction and refinement pipeline. The system uses a **Morphological Top-Hat Connected Component Labeling (CCL)** presence detector, **EasyOCR**, and a **stateful temporal cache** to extract subtitles from a low-frame-rate cropped video. It then refines the start and end timestamps at the native video frame rate using a **noise-robust bisection search**.
 
@@ -47,8 +47,8 @@ For detailed explanations of core subsystems and performance metrics, please rea
 ### Installation
 Clone the repository and sync the virtual environment:
 ```bash
-git clone https://github.com/dev-ansung/Subtitle.git
-cd Subtitle
+git clone https://github.com/dev-ansung/zhocr.git
+cd zhocr
 
 # Sync dependencies and create venv using uv
 uv sync
