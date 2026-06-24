@@ -27,4 +27,4 @@ testpaths = ["test"]
 pythonpath = [".", "src"]
 
 [project.scripts]
-main = "main:main"
+zhocr = "main:main"

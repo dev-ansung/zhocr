@@ -38,34 +38,42 @@ For detailed explanations of core subsystems and performance metrics, please rea
 
 ---
 
-## Developer Setup
+## Installation & Usage
 
-### Prerequisites
-* Python 3.10+
-* [uv](https://github.com/astral-sh/uv) (recommended package manager)
+### Run directly (no clone needed)
 
-### Installation
+Requires [uv](https://github.com/astral-sh/uv):
+
+```bash
+uvx --from git+https://github.com/dev-ansung/zhocr zhocr
+uvx --from git+https://github.com/dev-ansung/zhocr zhocr --start 60.0 --duration 20.0
+```
+
+### Developer Setup
+
 Clone the repository and sync the virtual environment:
 ```bash
 git clone https://github.com/dev-ansung/zhocr.git
 cd zhocr
-
-# Sync dependencies and create venv using uv
 uv sync
 ```
 
----
+Then run via:
+```bash
+uv run zhocr
+uv run zhocr --start 60.0 --duration 20.0
+```
 
 ## CLI Usage
 
-Run the main pipeline using `main.py`. The outputs (coarse SRT, refined SRT, cropped video, and debug frames) are automatically stored in unique timestamped directories under `./output/`.
+The outputs (coarse SRT, refined SRT, cropped video, and debug frames) are automatically stored in unique timestamped directories under `./output/`.
 
 ```bash
 # Run the pipeline for the entire video
-uv run main.py
+zhocr
 
 # Process a specific segment
-uv run main.py --start 60.0 --duration 20.0
+zhocr --start 60.0 --duration 20.0
 ```
 
 ### CLI Parameters
